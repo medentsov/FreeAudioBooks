@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.medina.freeaudiobooks">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SearchBooksActivity"
+            android:label="@string/title_activity_search_books"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".BookActivity"
+            android:label="@string/title_activity_book"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FavouritesActivity"
+            android:label="@string/title_activity_saved_and_favourites"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <provider
+            android:name=".data.MyBooksProvider"
+            android:authorities="com.medina.providers.BookBase"
+            android:exported="false" />
+
+        <receiver
+            android:name=".Recievers.BookReciever"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.example.medina.freeaudiobooks.ACTION_BOOK" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Services.PlayerService"
+            android:enabled="true"
+            android:exported="false"></service>
+    </application>
+
+</manifest>
